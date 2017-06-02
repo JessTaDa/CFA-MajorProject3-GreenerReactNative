@@ -20,22 +20,37 @@ import {
   View
 } from 'react-native';
 
-// import Camera from 'react-native-camera';
-// import Camera_comp from './components/camera/Camera_comp'
-// import QRCodeScanner from 'react-native-qrcode-scanner';
-// import Camera from 'react-native-camera';
-
-// import QRCodeScanner from './components/qr_code/QR_code'
-
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 
 export default class cuppa extends Component {
+
+onScannedBarcode (e) {
+console.log(e);
+post to axios
+// if scanned, show success screen and button to exit success screen
+constructor:
+scansuccess: false
+if scanSuccess = true? : show success scrreen : show camera
+
+}
+
+
+
   render() {
     return (
       <View>
         {/* <Camera /> */}
-        <QRCodeScanner reactivate={true} onRead={(e) => {console.log(e)}}/>
+
+{this.state.scannedSuccess ? (
+
+<Text>Wooo</Text>
+) : (
+
+
+        <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>
+      )}
+
       </View>
     )
   }
