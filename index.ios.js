@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import {
+  Alert,
   Image,
   AppRegistry,
   Dimensions,
@@ -33,20 +34,18 @@ export default class cuppa extends Component {
     }
   }
 
-  print() {
-    console.log("hello")
-  }
-
   onScannedBarcode (e) {
-    // console.log(e);
+    console.log(e);
     this.setState({
       scanSuccess: true
     })
-    console.log(this.state.scanSuccess)
+
+    // console.log(this.state.scanSuccess);
+
 
 
     // post to axios
-    // if scanned, show success screen and button to exit success screen
+    // if scan, show success screen and button to exit success screen
     // constructor:
     // scansuccess: false
     // if scanSuccess = true? : show success scrreen : show camera
@@ -56,10 +55,10 @@ export default class cuppa extends Component {
   render() {
     return (
       <View>
-          <Button title="hello" color="#841584" onPress={this.print}/>
-          <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>
+          {/* <Button title="hello" color="#841584" onPress={this.print}/>
+          <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/> */}
 
-          {/* {this.state.scannedSuccess ? (
+          {/* {this.state.scanSuccess ? (
             // <Text>Wooo Success!</Text>
             <Button color="#841584"/>
           ) : (
@@ -67,11 +66,25 @@ export default class cuppa extends Component {
           )} */}
 
 
-
-
-      {/* {this.state.scannedSuccess ? (<Text>Wooo Success!</Text>) :
+      {/* {this.state.scanSuccess ? (<Text>Wooo Success!</Text>) :
         (<QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>
             )} */}
+
+            {/* {this.state.scanSuccess ? (
+              <Button title="True" color="#841584" onPress={this.false.bind(this)}/>
+            ) : (
+              <Button title="False" color="#841584" onPress={this.true.bind(this)}/>
+            )} */}
+
+      {this.state.scanSuccess && <Button title="Success!!!">Success!!!</Button>}
+
+
+      {!this.state.scanSuccess && <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>}
+
+      {/* <View>
+    {this.state.error ? <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text> : null}
+    <Text>Hello World!</Text>
+    </View> */}
 
       </View>
     )
