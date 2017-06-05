@@ -30,19 +30,47 @@ export default class cuppa extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scanSuccess: false
+      scanSuccess: false,
+      info: {}
     }
-  }
+    this.onScannedBarcode = this.onScannedBarcode.bind(this);
+  };
 
   onScannedBarcode (e) {
+    console.log("APPLES!!!!!!")
     console.log(e);
     this.setState({
       scanSuccess: true
     })
+  };
+
+  onButtonPress (e) {
+    console.log("BUTTON PRESSED!!!!!!")
+    console.log(e);
+
+    // axios.post ("https://jessnodesever.heroku.com?" + e.data).
+
+  //   axios.post('/user', {
+  //   firstName: 'Fred',
+  //   lastName: 'Flintstone'
+  // })
+  // .then(function (response) {
+  //   console.log(response);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
+
+
+
+    this.setState({
+      scanSuccess: false
+    })
+  };
+
 
     // console.log(this.state.scanSuccess);
-
-
 
     // post to axios
     // if scan, show success screen and button to exit success screen
@@ -50,13 +78,9 @@ export default class cuppa extends Component {
     // scansuccess: false
     // if scanSuccess = true? : show success scrreen : show camera
 
-}
-
   render() {
     return (
       <View>
-          {/* <Button title="hello" color="#841584" onPress={this.print}/>
-          <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/> */}
 
           {/* {this.state.scanSuccess ? (
             // <Text>Wooo Success!</Text>
@@ -64,7 +88,6 @@ export default class cuppa extends Component {
           ) : (
             <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>
           )} */}
-
 
       {/* {this.state.scanSuccess ? (<Text>Wooo Success!</Text>) :
         (<QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>
@@ -76,8 +99,7 @@ export default class cuppa extends Component {
               <Button title="False" color="#841584" onPress={this.true.bind(this)}/>
             )} */}
 
-      {this.state.scanSuccess && <Button title="Success!!!">Success!!!</Button>}
-
+      {this.state.scanSuccess && <Button onPress={() => {this.onButtonPress()}} title={"Go Back"}>Success!!!</Button>}
 
       {!this.state.scanSuccess && <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>}
 
