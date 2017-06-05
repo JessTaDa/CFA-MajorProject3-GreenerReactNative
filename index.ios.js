@@ -38,32 +38,24 @@ export default class cuppa extends Component {
 
   onScannedBarcode (e) {
     console.log("APPLES!!!!!!")
-    console.log(e);
+    console.log(e.data);
     this.setState({
       scanSuccess: true
-    })
-  };
+      });
+
+      fetch(`https://greencafe.herokuapp.com/?cafe_data=${e.data}`, {
+        method:'POST'
+      })
+        // .then(() => this.getItems
+        .catch((error) => {
+          console.error(error);
+        });
+  }
+
 
   onButtonPress (e) {
     console.log("BUTTON PRESSED!!!!!!")
-    console.log(e);
-
-    // axios.post ("https://jessnodesever.heroku.com?" + e.data).
-
-  //   axios.post('/user', {
-  //   firstName: 'Fred',
-  //   lastName: 'Flintstone'
-  // })
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
-
-
-
-
+    // console.log(e);
     this.setState({
       scanSuccess: false
     })
@@ -99,7 +91,7 @@ export default class cuppa extends Component {
               <Button title="False" color="#841584" onPress={this.true.bind(this)}/>
             )} */}
 
-      {this.state.scanSuccess && <Button onPress={() => {this.onButtonPress()}} title={"Go Back"}>Success!!!</Button>}
+      {this.state.scanSuccess && <Button onPress={() => {this.onButtonPress()}} title="Go Back">Go Back!!!</Button>}
 
       {!this.state.scanSuccess && <QRCodeScanner reactivate={true} onRead={(e) => {this.onScannedBarcode(e)}}/>}
 
