@@ -24,9 +24,7 @@ import {
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-
 export default class cuppa extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -38,20 +36,25 @@ export default class cuppa extends Component {
 
   onScannedBarcode (e) {
     console.log("APPLES!!!!!!")
-    console.log(e.data);
+    // console.log(e.data);
     this.setState({
       scanSuccess: true
       });
+      // const URL = (`https://greencafe.herokuapp.com/api`?)
+      // fetch(`${URL} + ${e.data}`, {
 
-      fetch(`https://greencafe.herokuapp.com/?cafe_data=${e.data}`, {
+      fetch(`https://greencafe.herokuapp.com/api?${e.data}`, {
+
+      // fetch(`https://greencafe.herokuapp.com/api?=${e.data}`, {
+
+      // fetch(`http://localhost:3000/?cafe_data=${e.data}`, {
         method:'POST'
       })
-        // .then(() => this.getItems
+        .then((response) => console.log(response))
         .catch((error) => {
           console.error(error);
         });
   }
-
 
   onButtonPress (e) {
     console.log("BUTTON PRESSED!!!!!!")
@@ -60,15 +63,6 @@ export default class cuppa extends Component {
       scanSuccess: false
     })
   };
-
-
-    // console.log(this.state.scanSuccess);
-
-    // post to axios
-    // if scan, show success screen and button to exit success screen
-    // constructor:
-    // scansuccess: false
-    // if scanSuccess = true? : show success scrreen : show camera
 
   render() {
     return (
@@ -104,7 +98,5 @@ export default class cuppa extends Component {
     )
   }
 }
-
-
 
 AppRegistry.registerComponent('cuppa', () => cuppa);
