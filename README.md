@@ -1,5 +1,7 @@
 #  Greener - CFA Major Project 3 - React Native component
 
+Deployed at https://greencafe.herokuapp.com/
+
 For node component, go to https://github.com/JessTaDa/CFA-greener-node
 
 ### Problem Definition
