@@ -1,5 +1,7 @@
 #  Greener - CFA Major Project 3 - React Native component
 
+For node component, go to https://github.com/JessTaDa/CFA-greener-node
+
 ### Problem Definition
 
 Waste is a growing problem in Australia. In recent years, we have seen waste in Australia increasing more than 8% each year. Tackling wasted disposable coffee cups is one small way of tackling this issue.
